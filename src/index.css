@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+td {
+    border: 1px black solid ;
+    padding: 1px;
+}
+.overallraiting input {
+}
+.overallraiting input:checked + label {
+    background-color: blue;
+    color: white;
+    border-color: blue;
+    position: relative;
+}
