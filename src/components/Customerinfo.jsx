@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Customerinfo = () => {
+    const [email,setemail] = useState('')
+    const [error,seterror] = useState('')
+    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const Chekemail = (e) => {
+        setemail(e.target.value);
+        if(regex.test(email) === false) {
+            seterror('invalid email')
+        }else{
+            seterror('')
+            return true
+        }
+    }
+
     return (
     <>
     <div className='mt-[50px]'>
@@ -31,8 +44,9 @@ export const Customerinfo = () => {
         {/* Email */}
         <div>
             <label for="email">Customer's Email </label>
-            <input type="text" id='email' className=' bg-gray-100 rounded-md  border border-gray-500  w-[300px] mr-14 p-1 focus:border-blue-600 block mt-2' />
+            <input type="text" id='email' className=' bg-gray-100 rounded-md  border border-gray-500  w-[300px] mr-14 p-1 focus:border-blue-600 block mt-2' onChange={Chekemail} />
             <p className='text-sm mt-1 text-gray-500'>example@example.com</p>
+            <p className=' text-red-700'>{error}</p>
         </div>
         </div>
     </div>
